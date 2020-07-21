@@ -8,13 +8,20 @@ import {
 } from "../node_modules/@material-ui/core";
 import InfoBox from "./InfoBox";
 import Map from "./Map";
+import Table from "./Table"
+import LineGraph from "./LineGraph"
 import './App.css';
-
+import { sortData } from "./util"
+import "leaflet/dist/leaflet.css"
 
 function App() {
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState(['worldwide']);
   const [countryInfo, setCountryInfo] = useState({});
+  const [tableData, setTableData] = useState([]);
+  const [mapCenter, setMapCenter] = useState({ lat: 34.80746, lng: -40.4796});
+  const [mapZoom, setMapZoom] = useState(3);
+  const [mapCountries, setMapCountries] = useState([]);
 
   // STATE = How to write a variable in REACT 
   // API = https://disease.sh/v3/covid-19/countries
@@ -25,8 +32,9 @@ function App() {
     .then(response => response.json())
     .then(data => {
       setCountryInfo(data);
+      
     })
-  })
+  }, []);
 
   useEffect(() => {
     // async = send a request, wait for it, do something with the info
@@ -40,6 +48,9 @@ function App() {
             name: country.country, // United States, United Kingdom, France
             value: country.countryInfo.iso2 //UK, US, FR
           }));
+        const sortedData = sortData(data);
+        setTableData(sortedData);
+        setMapCountries(data);
         setCountries(countries);
       });
     };
@@ -61,6 +72,9 @@ function App() {
     .then(data => {
       setCountry(countryCode);
       setCountryInfo(data);
+
+      setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
+      setMapZoom(4);
     })
 
   }
@@ -101,17 +115,24 @@ function App() {
           />  
         </div>
   
-        <Map></Map>
-        {/* Map */}
+        <Map
+          countries={mapCountries}
+          center={mapCenter}
+          zoom={mapZoom}
+        />
+
       </div>
       <Card className="app__right">
         <CardContent>
           <h1>Live Cases by Country</h1>
+          <Table countries={tableData} />
           <h1>Cases Worldwide</h1>
+          <LineGraph />
           
         </CardContent>
             
       </Card>
+
     </div>
   );
 }
