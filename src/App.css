@@ -6,6 +6,11 @@ body{
   background-color: #f5f6fa;
 }
 
+.heading {
+  color: #fc3c3c;
+font-size: 2rem;
+}
+
 .app__header{
   display: flex;
   align-items: center;
@@ -25,6 +30,20 @@ body{
   flex: 0.9;
 }
 
+.app_right{
+  display: flex;
+  flex-direction: column;
+}
+
+.app__right .MuiCardContent-root {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.app__graph {
+  flex-grow: 1;
+}
 @media (max-width: 990px) {
   .app{
     flex-direction: column;
