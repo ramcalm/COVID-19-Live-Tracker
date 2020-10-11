@@ -1,0 +1,52 @@
+body
+{
+	background-color: #d2f5e3;
+	text-align: center;
+}
+h1
+{
+	font-family: 'Sansita Swashed', cursive;
+	margin-bottom: 150px;
+}
+.table
+{
+	text-align: center;
+	margin-left: 250px;
+	margin-right:250px;
+}
+h2
+{
+	font-family: 'Sansita Swashed', cursive;
+	margin-right: 100px;
+	color: gray;
+}
+.frame
+{
+	margin-left: 100px;
+	margin-bottom: 50px;
+}
+.avoid
+{
+	position: absolute;
+	left:20%;
+	top:100px;
+}
+/*h2
+{
+	position: absolute;
+	margin-top: 150px;
+	left: 150px;
+	top: 150px;
+	
+}
+.floors
+{
+	margin-top: 150px;
+}
+.frame
+{
+	position: absolute;
+	right:150px;
+
+}
+*/
