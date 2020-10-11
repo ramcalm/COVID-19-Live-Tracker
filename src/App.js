@@ -14,6 +14,7 @@ import './App.css';
 import { sortData, prettyPrintStat } from "./util"
 import "leaflet/dist/leaflet.css"
 
+
 function App() {
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState(['worldwide']);
@@ -36,6 +37,8 @@ function App() {
       
     })
   }, []);
+
+  console.log(countryInfo);
 
   useEffect(() => {
     // async = send a request, wait for it, do something with the info
